@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #weather-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="weather-container">
+        <h1>Weather App</h1>
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" placeholder="City">
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div id="weather-info"></div>
+    </div>
+
+    <script>
+        function getWeather() {
+            const apiKey = 'e502a068955c85488c55c8f15ab35747';
+            const city = document.getElementById('city').value;
+
+            if (!city) {
+                alert('Please enter a city name');
+                return;
+            }
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherInfo = document.getElementById('weather-info');
+                    if (data.cod === '404') {
+                        weatherInfo.innerHTML = `<p>${data.message}</p>`;
+                    } else {
+                        const temperature = data.main.temp;
+                        const description = data.weather[0].description;
+                        const cityName = data.name;
+
+                        weatherInfo.innerHTML = `<p>Temperature in ${cityName}: ${temperature}°C</p>
+                                                <p>Weather: ${description}</p>`;
+                    }
+                })
+                .catch(error => console.error('Error fetching weather data:', error));
+        }
+    </script>
+</body>
+</html>
