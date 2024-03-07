@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color:#000000;
+            background-image: url('pic.png');
+        }
+
+        h1 {
+            color: #000000;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Blog</h1>
+
+    <ul>
+        <li>
+            <h2>Sky High</h2>
+            <p>Amazed to see the sky very high from the ground.We want to fly in the sky high .It is the thought of the William Brothers.</p>
+        </li>
+        <li>
+            <h2>Happy Life</h2>
+            <p>Life is very short so we must make each and every moment happy.</p>
+        </li>
+        <!-- Add more posts here -->
+    </ul>
+
+    <form>
+        <h2>Add a New Post</h2>
+        <label for="postTitle">Title:</label>
+        <input type="text" id="postTitle" name="postTitle" required>
+
+        <label for="postContent">Content:</label>
+        <textarea id="postContent" name="postContent" rows="4" required></textarea>
+
+        <button type="submit">Submit Post</button>
+    </form>
+</body>
+</html>
